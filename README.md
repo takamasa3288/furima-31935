@@ -16,8 +16,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :order
-- has_one :address
+- has_many :address
 
 ## items テーブル
 
@@ -63,7 +62,7 @@
 | user               | references  | null:false, foreign_key: true |
 
 ### Association
-- belongs_to :user
+- belongs_to :address
 
 ## address テーブル
 
@@ -71,3 +70,9 @@
 | ------- | ------- | ----------------------------- |
 | user_id | integer | null:false                    |
 | item_id | integer | null:false                    |
+
+### Association
+- has_one :order
+- belongs_to :user
+- belongs_to :item
+
