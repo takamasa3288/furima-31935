@@ -2,21 +2,21 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ---------------    | ------ | ----------- |
-| name               | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| last_name          | string | null: false |
-| first_name         | string | null: false |
-| last_name_kana     | string | null: false |
-| first_name_kana    | string | null: false |
-| birth_day          | date   | null: false   |
+| Column             | Type   | Options                  |
+| ---------------    | ------ | -----------              |
+| name               | string | null: false              |
+| email              | string | null: false, unique: true|
+| encrypted_password | string | null: false              |
+| last_name          | string | null: false              |
+| first_name         | string | null: false              |
+| last_name_kana     | string | null: false              |
+| first_name_kana    | string | null: false              |
+| birth_day          | date   | null: false              |
 
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :address
+- has_many :orders
 
 ## items テーブル
 
@@ -35,7 +35,7 @@
 ### Association
 - belongs_to :user
 - has_many :comments
-- has_one :address
+- has_one :order
 
 ## comments テーブル
 
@@ -49,7 +49,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## orders テーブル
+## addresses テーブル
 
 | Column             | Type        | Options                       |
 | ------------------ | -------     | ----------------------------- |
@@ -58,13 +58,13 @@
 | city               | string      | null:false                    |
 | house_number       | string      | null:false                    |
 | building_name      | string      |                               |
-| phone_number       | string     | null:false                    |
-| user               | references  | null:false, foreign_key: true |
+| phone_number       | string      | null:false                    |
+| order              | references  | null:false, foreign_key: true |
 
 ### Association
-- belongs_to :address
+- belongs_to :order
 
-## address テーブル
+## orders テーブル
 
 | Column             | Type        | Options                       |
 | ------- | ------- | ----------------------------- |
@@ -72,7 +72,7 @@
 | item_id | integer | null:false                    |
 
 ### Association
-- has_one :order
+- has_one :address
 - belongs_to :user
 - belongs_to :item
 
