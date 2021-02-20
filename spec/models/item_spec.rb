@@ -12,7 +12,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
     end
-    context '商品出品がうまく行かないとき' do
+    context '商品出品がうまく行かないとき'do
       it 'imageが存在しない場合' do
         @item.image = nil
         @item.valid?
@@ -31,27 +31,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが選択されていない場合' do
         @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 0')
+        expect(@item.errors.full_messages).to include("Category must be other than 0")
       end
       it 'state_idが選択されていない場合' do
         @item.state_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include('State must be other than 0')
+        expect(@item.errors.full_messages).to include("State must be other than 0")
       end
       it 'carriage_idが選択されていない場合' do
         @item.carriage_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include('Carriage must be other than 0')
+        expect(@item.errors.full_messages).to include("Carriage must be other than 0")
       end
       it 'area_idが選択されていない場合' do
         @item.area_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include('Area must be other than 0')
+        expect(@item.errors.full_messages).to include("Area must be other than 0")
       end
       it 'days_idが選択されていない場合' do
         @item.days_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include('Days must be other than 0')
+        expect(@item.errors.full_messages).to include("Days must be other than 0")
       end
       it 'priceが存在しない場合' do
         @item.price = nil
@@ -61,22 +61,22 @@ RSpec.describe Item, type: :model do
       it 'priceが300未満の場合' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
       it 'priceが9999999より多い場合' do
-        @item.price = 10_000_000
+        @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
       it 'priceが全角数字の場合' do
-        @item.price = '１０００'
+        @item.price = "１０００"
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not a number')
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
       it 'priceが数字以外の場合' do
-        @item.price = 'aaaaaaa'
+        @item.price = "aaaaaaa"
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not a number')
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
     end
   end
