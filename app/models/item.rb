@@ -1,11 +1,12 @@
 class Item < ApplicationRecord
   with_options presence: true do
-    validates :name
-    validates :description
-    validates :price
+    validates :name, length:{ maximum: 40 }
+    validates :description, length:{ maximum: 1000 }
+    validates :price, format: { with: /\A[0-9]+\z/}, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
     validates :user
+    validates :image
     with_options numericality: { other_than: 0 } do
-      validates :categorry_id
+      validates :category_id
       validates :state_id
       validates :carriage_id
       validates :area_id
