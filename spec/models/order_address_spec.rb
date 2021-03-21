@@ -70,6 +70,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is invalid')
       end
+      
+      it '全角数字だと登録できない' do
+        @order_address.phone_number = 'ああああああああ'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid')
+      end
 
       it 'tokenが空では登録できないこと' do
         @order_address.token = nil
@@ -88,6 +94,7 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
+
     end
   end
 end
