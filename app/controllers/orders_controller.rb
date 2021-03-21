@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
 
   def index
     @order_address = OrderAddress.new
-    sold_out_move_to_index
   end
 
   def create
