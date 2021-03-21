@@ -70,9 +70,9 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is invalid')
       end
-      
-      it '全角数字だと登録できない' do
-        @order_address.phone_number = 'ああああああああ'
+
+      it 'phone_numberが全角数字だと登録できない' do
+        @order_address.phone_number = '０９０１１１１１１１１'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is invalid')
       end
