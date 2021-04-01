@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    set_item
+    @favorite = Favorite.new
   end
 
   def edit
